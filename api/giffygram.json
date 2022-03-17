@@ -1,0 +1,111 @@
+{
+  "users": [
+    {
+      "name": "Bryan",
+      "email": "bryan@bn.com",
+      "id": 1
+    },
+    {
+      "name": "Brenda",
+      "email": "brenda@home.com",
+      "id": 2
+    },
+    {
+      "name": "Brenda",
+      "email": "brenda@home.com",
+      "id": 3
+    },
+    {
+      "name": "Rickets",
+      "email": "rick@ets.com",
+      "id": 4
+    },
+    {
+      "name": "Lupus",
+      "email": "lupe@fiasco.com",
+      "id": 5
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "imageURL": "https://media.giphy.com/media/26xBI73gWquCBBCDe/giphy.gif",
+      "userId": 1,
+      "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+      "timestamp": 1561695022812,
+      "title": "Enhanced global utilisation"
+    },
+    {
+      "imageURL": "https://media.giphy.com/media/13axhuqbzavew0/giphy.gif",
+      "userId": 1,
+      "description": "Bort",
+      "timestamp": 1561695029999,
+      "title": "Bort Sampson",
+      "id": 2
+    },
+    {
+      "imageURL": "https://media.giphy.com/media/U1lrVuoMtWu3ApVhMv/giphy.gif",
+      "userId": 1,
+      "description": "Borf",
+      "timestamp": 1561695029999,
+      "title": "borf",
+      "id": 3
+    },
+    {
+      "imageURL": "https://media.giphy.com/media/qcngMWgXh4SiY/giphy.gif",
+      "userId": 1,
+      "description": "Borth",
+      "timestamp": 1561695029999,
+      "title": "Birth",
+      "id": 4
+    },
+    {
+      "title": "wawaweewa",
+      "imageURL": "https://media.giphy.com/media/yRkczL1Erdnhwysx9w/giphy.gif",
+      "description": "very nice",
+      "userId": 1,
+      "timestamp": 1647544357886,
+      "id": 5
+    },
+    {
+      "title": "borj",
+      "imageURL": "https://media.giphy.com/media/Uz4m5pUixv9ao/giphy.gif",
+      "description": "hugh?",
+      "userId": 1,
+      "timestamp": 1647544536359,
+      "id": 6
+    },
+    {
+      "title": "Bert",
+      "imageURL": "https://media.giphy.com/media/wTDjZPnq6QsAo/giphy.gif",
+      "description": "license plates",
+      "userId": 1,
+      "timestamp": 1469644200000,
+      "id": 7
+    },
+    {
+      "title": "applause",
+      "imageURL": "https://media.giphy.com/media/xT1R9Mu1CCG7HiIezK/giphy.gif",
+      "description": "Please Clap",
+      "userId": 1,
+      "timestamp": 1469644200000,
+      "id": 8
+    },
+    {
+      "title": "crunchy",
+      "imageURL": "https://media.giphy.com/media/TJloadfLEUcihzujXN/giphy.gif",
+      "description": "very",
+      "userId": 1,
+      "timestamp": 1469644200000,
+      "id": 9
+    }
+  ],
+  "messages": [],
+  "likes": [
+    {
+      "id": 1,
+      "userId": 1,
+      "postId": 1
+    }
+  ]
+}
