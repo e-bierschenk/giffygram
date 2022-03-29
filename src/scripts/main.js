@@ -1,5 +1,6 @@
-import { getUsers, getPosts, getLoggedInUser, usePostCollection, createPost } from "./data/datamanagers.js";
+import { getUsers, getPosts, getLoggedInUser, usePostCollection, createPost, deletePost, getSinglePost, updatePost } from "./data/datamanagers.js";
 import { postList } from "./feed/postList.js"
+import { postEdit } from "./feed/postEdit.js";
 import { navBar } from "./nav/navBar.js"
 import { footer } from "./footer/footer.js";
 import { postEntry } from "./feed/postEntry.js";
@@ -13,7 +14,6 @@ const showNavBar = () => {
 const showPostList = (postCollection) => {
     //Get a reference to the location on the DOM where the list will display
     const postElement = document.querySelector(".postList");
-
     postElement.innerHTML = postList(postCollection);
 }
 
@@ -56,6 +56,42 @@ applicationElement.addEventListener("click", event => {
     } else if (event.target.id.startsWith("edit")) {
         console.log("post clicked", event.target.id.split("--"))
         console.log("the id is", event.target.id.split("--")[1])
+        const postId = event.target.id.split("--")[1];
+        getSinglePost(postId)
+            .then(response => {
+                showEdit(response);
+            })
+    }
+})
+
+const showEdit = (postObj) => {
+    const entryElement = document.querySelector(".entryForm");
+    entryElement.innerHTML = postEdit(postObj);
+}
+
+applicationElement.addEventListener("click", event => {
+    event.preventDefault();
+    if (event.target.id.startsWith("updatePost")) {
+        const postId = event.target.id.split("__")[1];
+        //collect all the details into an object
+        const title = document.querySelector("input[name='postTitle']").value
+        const url = document.querySelector("input[name='postURL']").value
+        const description = document.querySelector("textarea[name='postDescription']").value
+        const timestamp = document.querySelector("input[name='postTime']").value
+
+        const postObject = {
+            title: title,
+            imageURL: url,
+            description: description,
+            userId: getLoggedInUser().id,
+            timestamp: parseInt(timestamp),
+            id: parseInt(postId)
+        }
+
+        updatePost(postObject)
+            .then(getPosts)
+            .then(response => showPostList(response))
+            .then(showPostEntry)
     }
 })
 
@@ -69,6 +105,8 @@ applicationElement.addEventListener("change", event => {
     }
 })
 
+
+
 //event listener for the edit post button
 applicationElement.addEventListener("click", event => {
     if (event.target.id === "newPost__cancel") {
@@ -76,6 +114,16 @@ applicationElement.addEventListener("click", event => {
         showPostEntry()
     }
 })
+
+applicationElement.addEventListener("click", event => {
+    if (event.target.id.startsWith("delete")) {
+        const postId = event.target.id.split("__")[1]
+        deletePost(postId)
+            .then(response => getPosts())
+            .then(data => showPostList(data))
+    }
+})
+
 
 //event listener for the post button
 applicationElement.addEventListener("click", event => {
@@ -95,13 +143,14 @@ applicationElement.addEventListener("click", event => {
             timestamp: Date.now()
         }
 
-    createPost(postObject)
-    .then(() => getPosts())
-    .then(data => {
-        showPostList(data)
-        showPostEntry()
-    })
-}})
+        createPost(postObject)
+            .then(() => getPosts())
+            .then(data => {
+                showPostList(data)
+                showPostEntry()
+            })
+    }
+})
 
 
 //filter posts by year
@@ -117,5 +166,6 @@ const showFilteredPosts = (year) => {
     //regenerate post list with filtered list
     showPostList(filteredData)
     //update post count in footer
-    document.querySelector("#postCount").innerHTML = `${filteredData.length}`;
+    document.querySelector("#postCount").innerHTML = `${filteredData.length}`
 }
+

@@ -22,6 +22,7 @@ export const postEntry = () => {
 
         <button id="newPost__submit">Save</button>
         <button id="newPost__cancel">Cancel</button>
+        
     </div>
     `
 }
